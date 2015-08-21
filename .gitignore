@@ -1,0 +1,8 @@
+.Python
+venv
+bin
+lib
+include
+.DS_Store
+.pyc
+.sqlite3
