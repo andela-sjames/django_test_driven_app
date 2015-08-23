@@ -15,9 +15,9 @@
     <h1>Add Contact</h1>
     <br>
     <form action="/create" method ="POST" role="form">
-        {% csrf\_token %}
-        {{ person_\_form.as\_p }}
-        {{ phone\_form.as\_p }}
+        {% csrf_token %}
+        {{ person_form.as_p }}
+        <!--{{ phone_form.as_p }}-->
         <input type ="submit" name ="Submit" class="btn btn-default" value ="Add">
     </form>
       <br>
