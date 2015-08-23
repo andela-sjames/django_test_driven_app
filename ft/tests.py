@@ -35,6 +35,36 @@ class UserContactTest(LiveServerTestCase):
         #body = self.browser.find_element_by_tag_name('body')
         #self.assertIn('live@forever.com', body.text)
 
+
+
+   def test_create_contact_admin_raise_error(self):
+        # # user opens web browser, navigates to admin page, and logs in
+        self.browser.get(self.live_server_url + '/admin/')
+        username_field = self.browser.find_element_by_name('username')
+        username_field.send_keys('andela')
+        password_field = self.browser.find_element_by_name('password')
+        password_field.send_keys('andela')
+        password_field.send_keys(Keys.RETURN)
+        # user clicks on the Persons link
+        persons_links = self.browser.find_elements_by_link_text('Persons')
+        persons_links[0].click()
+        # user clicks on the Add person link
+        add_person_link = self.browser.find_element_by_link_text('Add person')
+        add_person_link.click()
+        # user fills out the form
+        self.browser.find_element_by_name('first_name').send_keys("test@")
+        self.browser.find_element_by_name('last_name').send_keys("tester")
+        self.browser.find_element_by_name('email').send_keys("test@tester.com")
+        self.browser.find_element_by_name('address').send_keys("2227 Tester Ave")
+        self.browser.find_element_by_name('city').send_keys("Tester City")
+        self.browser.find_element_by_name('state').send_keys("TC")
+        self.browser.find_element_by_name('country').send_keys("TCA")
+        # user clicks the save button
+        self.browser.find_element_by_css_selector("input[value='Save']").click()
+        body = self.browser.find_element_by_tag_name('body')
+        self.assertIn('Invalid', body.text)
+
+
     def test_create_contact(self):
         # user opens web browser, navigates to home page
         self.browser.get(self.live_server_url + '/')
