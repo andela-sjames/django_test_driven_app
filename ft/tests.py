@@ -37,7 +37,7 @@ class UserContactTest(LiveServerTestCase):
 
 
 
-   def test_create_contact_admin_raise_error(self):
+    def test_create_contact_admin_raise_error(self):
         # # user opens web browser, navigates to admin page, and logs in
         self.browser.get(self.live_server_url + '/admin/')
         username_field = self.browser.find_element_by_name('username')
